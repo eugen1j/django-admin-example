@@ -142,15 +142,15 @@ Now, it's time to fill our database with some dummy data!
 
 Let's add a `customer` user;
 
-![](blog/img/01_add_a_customer.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_add_a_customer.png)
 
 Some product to our shop;
 
-![](blog/img/01_products_added.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_products_added.png)
 
 And create an order for the customer.
 
-![](blog/img/01_adding_an_order.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_adding_an_order.png)
 
 ## Custom Order Page
 
@@ -204,7 +204,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 Let's check how it looks:
 
-![](blog/img/01_order_table.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_order_table.png)
 
 
 ## Creating a template
@@ -234,7 +234,7 @@ Add this code to the `detail.html` and check the page in your browser:
 {% endblock %}
 ```
 
-![](blog/img/01_order_userinfo.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_order_userinfo.png)
 
 The page looks like a Django Page, but we are missing some components on the page: breadcrumbs, sidebar, and change password/logout buttons. You can check [admin/base.html](https://github.com/django/django/blob/main/django/contrib/admin/templates/admin/base.html) and [admin/change_form.html](https://github.com/django/django/blob/main/django/contrib/admin/templates/admin/change_form.html) to see how they are implemented.
 
@@ -267,7 +267,7 @@ This will be enough for the sidebar and change password/logout buttons. Now, let
 {% endblock %}
 ```
 
-![](blog/img/01_order_navigation.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_order_navigation.png)
 
 
 Finally, let's add a product table. We need a total amount of Order, so create a `total_amount` method for `OrderItem` and `Order`:
@@ -326,7 +326,7 @@ Add the table and the total to the `detail.html`:
 
 Check the final result:
 
-![](blog/img/01_order_detail.png)
+![](https://raw.githubusercontent.com/eugen1j/django-admin-example/main/blog/img/01_order_detail.png)
 
 ## The end 
 
