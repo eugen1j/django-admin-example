@@ -1,0 +1,53 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n admin_urls %}
+
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo; {{ object }}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Order by {{ object.user }} {{ object.created.date }}</h1>
+
+    <dl>
+        <dt>Name:</dt>
+        <dd>{{ object.user.get_full_name }}</dd>
+        <dt>Email:</dt>
+        <dd>{{ object.user.email }}</dd>
+    </dl>
+
+    <table style="width: 100%; margin-bottom: 10px;">
+        <thead>
+        <tr>
+            <td></td>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Count</td>
+            <td>Total</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in object.orderitem_set.all %}
+            <tr>
+                <td><img src="{{ item.product.image.url }}" height="50"></td>
+                <td>{{ item.product.title }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>x{{ item.count }}</td>
+                <td>${{ item.total_amount }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="font-size: 18px;text-align: end;padding-right: 60px;">
+        Total: ${{ object.total_amount }}
+    </p>
+
+{% endblock %}
