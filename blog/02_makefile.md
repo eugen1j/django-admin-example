@@ -4,7 +4,7 @@ During the development process, you often need to run some commands in your term
 
 It's helpful to have shortcuts for such commands. And even better to share them among other developers on the project. For this goal, I use [Makefile](https://en.wikipedia.org/wiki/Make_(software)#Makefile). Here is the list of useful commands for a Django project.
 
-1. Installing dependencies
+### Installing dependencies
 
 I'm not a big fan of [Poetry](https://python-poetry.org/). It has [some problems](https://github.com/dependabot/dependabot-core/issues?q=is%3Aissue+is%3Aopen+poetry+label%3A%22L%3A+python%3Apoetry%22) with Dependabot and doesn't play with [Renovate](https://docs.renovatebot.com/python/) at all. I use [pip-tools](https://github.com/jazzband/pip-tools) with separate `requirements.in` and `requirements-dev.in` for local and prod environments. 
 
@@ -31,7 +31,7 @@ Commands:
 - `pip-install` - I don't use this command often, but it could be helpful to run your code with production dependencies only. 
 - `pip-update` Updates your `requirements.txt` and `requirements-dev.txt` after you add a new package to the `requirements.in` or `requirements-dev.in`.
 
-2. Running the project
+### Running the project
 
 ```makefile
 server:
@@ -46,7 +46,7 @@ beat:
 
 That is an obvious one. The commands to run local web server and [Celery](https://docs.celeryq.dev/en/stable/). Also, I like to apply new migrations automatically when I run the server.
 
-3. Running linters
+### Running linters
 
 ```makefile
 lint:
@@ -81,7 +81,7 @@ install-hooks:
 	echo "make lint && make checkmigrations" > .git/hooks/pre-commit && chmod 777 .git/hooks/pre-commit
 ```
 
-4. Running tests
+### Running tests
 
 ```makefile
 test:
@@ -90,7 +90,7 @@ test:
 
 Runs [pytest](https://docs.pytest.org/en/7.1.x/) in multiprocess mode using [pytest-xdist](https://github.com/pytest-dev/pytest-xdist).
 
-5. Compiling messages 
+### Compiling messages 
 
 ```makefile
 messages:
